@@ -3,37 +3,30 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-    WebView webView;
+    EditText write_code;
+    Button run_btn;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        webView = findViewById(R.id.web);
-
-        String html = "<!DOCTYPE html>\n" +
-                "<html lang=\"en\">\n" +
-                "<head>\n" +
-                "    <meta charset=\"UTF-8\">\n" +
-                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
-                "    <title>Document</title>\n" +
-                "</head>\n" +
-                "<body>\n" +
-                "    <h1>Hello World!</h1>\n" +
-                "</body>\n" +
-                "</html>";
-
-        webView.loadUrl(html);
-
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        webView.setWebChromeClient(new WebChromeClient());
+        write_code = findViewById(R.id.write_code);
+        run_btn = findViewById(R.id.run_btn);
+        String str = write_code.getText().toString();
+        run_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, OutputActivity.class);
+            intent.putExtra("code", str);
+            startActivity(intent);
+        });
         
     }
 }

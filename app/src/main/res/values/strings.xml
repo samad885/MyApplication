@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="html_compiler">html compiler</string>
+    <string name="run">Run</string>
+    <string name="html_code">html code</string>
 </resources>
