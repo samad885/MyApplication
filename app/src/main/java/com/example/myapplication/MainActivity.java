@@ -27,6 +27,6 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("code", str);
             startActivity(intent);
         });
-        
+
     }
 }
